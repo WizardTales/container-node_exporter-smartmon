@@ -32,7 +32,6 @@ RUN apt-get -q update && \
         https://github.com/prometheus-community/node-exporter-textfile-collector-scripts.git \
         /scripts && \
     chmod 755 /scripts/* && \
-    sed -i 's/\(awk '"'"'\/^\\\/\)dev/\1hdev/' scripts/smartmon.sh && \
     update-pciids -q
 
 COPY entrypoint.sh /entrypoint.sh
