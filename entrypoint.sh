@@ -18,6 +18,6 @@ fi
 
 echo "Starting ${SCRIPT} loop ..."
 while true; do
-    "/scripts/${SCRIPT}" "${@}" | sponge "/var/lib/node_exporter/${OUTPUT_FILENAME}.prom"
+    { "/scripts/${SCRIPT}" "${@}"; "/scripts/nvme_metrics.sh" "${@}"; } | sponge "/var/lib/node_exporter/${OUTPUT_FILENAME}.prom"
     sleep "${INTERVAL}"
 done
